@@ -1,3 +1,5 @@
+![cover](https://github.com/Mart1M/Design-System-Radar/assets/28647820/2a159be1-a743-4fb1-9040-a44da202ead6)
+
 # Design System Radar Plugin
 
 ## Overview
