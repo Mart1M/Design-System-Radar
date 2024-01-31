@@ -1,64 +1,51 @@
 <!-- ui.html -->
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <!-- Standard link tag-->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* style.css */
-
-      body,
-      html {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        width: 100%;
-        height: auto;
-        background-image: url("./assets/BraveM.jpg");
-        font-family: "Inter";
-      }
-
-      .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        text-align: left;
-      }
-
-      .tab-content {
-        display: none;
-      }
+        /* style.css */
+        
+        body,
+        html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 100%;
+            height: auto;
+            background-image: url("./assets/BraveM.jpg");
+            font-family: "Inter";
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .tab-content {
+            display: none;
+        }
     </style>
-  </head>
+</head>
 
-  <body class="bg-white dark:bg-slate-800">
+<body class="bg-white dark:bg-slate-800">
     <div class="container">
-      <h1
-        class="flex items-center text-3xl font-extrabold dark:text-white mb-4"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="32"
-          height="32"
-          fill="currentColor"
-          class="mr-2"
-        >
+        <h1 class="flex items-center text-3xl font-extrabold dark:text-white mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" class="mr-2">
           <path
             d="M4.25705 5.67127L6.39362 7.80783C5.5184 8.97641 5 10.4277 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C10.4277 5 8.97641 5.5184 7.80783 6.39362L5.67127 4.25705C7.39514 2.84637 9.59873 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 9.59873 2.84637 7.39514 4.25705 5.67127ZM7.8284 9.24261L12 13.4142L13.4142 12L9.24261 7.8284C10.033 7.30488 10.9809 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 10.9809 7.30488 10.033 7.8284 9.24261Z"
           ></path>
-        </svg>
-        Design System Radar
-      </h1>
+        </svg> Design System Radar
+        </h1>
 
-      <button
-        type="button"
-        id="getDataButton"
-        class="text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-indigo-500 dark:hover:bg-indigo-500 dark:focus:ring-indigo-100"
-      >
+        <button type="button" id="getDataButton" class="text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-indigo-500 dark:hover:bg-indigo-500 dark:focus:ring-indigo-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -73,20 +60,14 @@
         </svg>
         Scan selection
       </button>
-      <p class="mb-3 text-gray-500 dark:text-gray-400 text-sm mt-2">
-        Scan your interfaces to make them Design System compliant
-      </p>
+        <p class="mb-3 text-gray-500 dark:text-gray-400 text-sm mt-2">
+            Scan your interfaces to make them Design System compliant
+        </p>
 
-      <div class="border-b border-gray-200 dark:border-gray-700">
-        <ul
-          class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400"
-        >
-          <li class="me-2">
-            <button
-              onclick="openTab(event, 'Instances')"
-              id="tabInstances"
-              class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group"
-            >
+        <div class="border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                <li class="me-2">
+                    <button onclick="openTab(event, 'Instances')" id="tabInstances" class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group">
               <svg
                 width="16"
                 height="16"
@@ -111,13 +92,9 @@
                 >0</span
               >
             </button>
-          </li>
-          <li class="me-2">
-            <button
-              onclick="openTab(event, 'Variables')"
-              id="tabVariablesButton"
-              class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group"
-            >
+                </li>
+                <li class="me-2">
+                    <button onclick="openTab(event, 'Variables')" id="tabVariablesButton" class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group">
               <svg
                 width="20"
                 height="16"
@@ -139,12 +116,9 @@
                 >0</span
               >
             </button>
-          </li>
-          <li class="me-2">
-            <button
-              onclick="openTab(event, 'Dimension')"
-              class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group"
-            >
+                </li>
+                <li class="me-2">
+                    <button onclick="openTab(event, 'Dimension')" class="tab-button inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-500 dark:hover:text-gray-300 group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -164,18 +138,15 @@
                 >0</span
               >
             </button>
-          </li>
-        </ul>
-      </div>
+                </li>
+            </ul>
+        </div>
 
-      <div id="Instances" class="tab-content">
-        <div class="table-container">
-          <div class="relative overflow-x-auto mt-2">
-            <caption
-              class="p-5 text-lg text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800"
-            >
-              <strong class="font-semibold dark:text-slate-100"
-                >Instances checker:</strong
+        <div id="Instances" class="tab-content">
+            <div class="table-container">
+                <div class="relative overflow-x-auto mt-2">
+                    <caption class="p-5 text-lg text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                        <strong class="font-semibold dark:text-slate-100">Instances checker:</strong
               >
               <p
                 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"
@@ -388,11 +359,11 @@
         const message = event.data.pluginMessage;
         if (message.type === "instance-data") {
           let rows = "";
-          message.data.forEach(({ instanceName, hasRoad, instanceId }) => {
+          message.data.forEach(({ instanceName, hasSuffix, instanceId }) => {
             rows += `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"><a href="#" class="instance-link font-medium hover:underline" data-id="${instanceId}">${instanceName}</a></td>
                         <td class="px-6 py-4">${
-                          hasRoad
+                          hasSuffix
                             ? `<svg class="w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                 </svg>`

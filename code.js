@@ -33,7 +33,7 @@ function getSelectedInstanceData() {
                     containsKeyword = mainComponent.description.includes("[ds-radar]");
                 }
                 // check if component name has suffix
-                const hasSuffix = mainComponentName.includes("") || containsKeyword;
+                const hasSuffix = mainComponentName.includes("- road") || containsKeyword;
                 data.push({ instanceName, hasSuffix, instanceId });
             }
         }

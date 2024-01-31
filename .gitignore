@@ -5,5 +5,4 @@
 .turbo
 build/
 node_modules/
-manifest.json
 code.js
