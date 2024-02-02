@@ -1,5 +1,5 @@
 figma.showUI(__html__, { width: 800, height: 500 });
-const allowedSpacings = [0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 160];
+let allowedSpacings = [0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 160];
 
 function isNodeVisible(node: SceneNode): boolean {
   if (!node.visible) {
@@ -300,4 +300,23 @@ figma.ui.onmessage = (msg) => {
       data: dimensionResults,
     });
   }
+  if (msg.type === 'update-spacings') {
+    updateAllowedSpacings(msg.newSpacings);
+  }
 };
+
+// Récupération des espacements autorisés depuis clientStorage ou utilisation d'une valeur par défaut
+figma.clientStorage.getAsync('allowedSpacings').then((spacings) => {
+  const allowedSpacings = spacings || [8, 16, 32]; // Valeurs par défaut
+  figma.ui.postMessage({ type: 'set-allowed-spacings', allowedSpacings });
+});
+function updateAllowedSpacings(newSpacings: number[]) {
+  figma.clientStorage.setAsync('allowedSpacings', newSpacings).then(() => {
+    figma.ui.postMessage({ type: 'update-success' });
+    allowedSpacings = newSpacings;
+    figma.notify("Dimensions updated: "+ newSpacings);
+    console.log(allowedSpacings);
+  });
+}
+
+

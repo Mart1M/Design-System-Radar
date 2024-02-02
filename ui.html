@@ -153,6 +153,7 @@
               >
                 List of instances in the selection
               </p>
+              <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400 italic">You can write <code>[ds-radar]</code> in your design system components description to reference them in the instance analysis.</p>
             </caption>
             <table
               id="dataList"
@@ -169,7 +170,6 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Les données seront injectées ici -->
               </tbody>
             </table>
           </div>
@@ -235,6 +235,12 @@
       </div>
       <div id="Dimension" class="tab-content">
         <div class="relative overflow-x-auto mt-2">
+        <div class="relative w-full">
+            <input id="spacingInput" type="text" placeholder="Ex: 8, 16, 32" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-indigo-500"
+            />
+            <button id="updateButton" class="absolute top-0 end-0 p-2.5 h-full text-sm font-medium text-white bg-indigo-500 rounded-e-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-100 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:ring-indigo-800">Set dimensions system</button>
+        </div>
+        <p class="mt-2 mb-2 text-sm text-gray-500 dark:text-gray-400">You can use your own dimensions system. For ex: 0, 2, 4, 8, 12, 16, 32, ...</p>
           <caption
             class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800"
           >
@@ -284,7 +290,7 @@
             "text-indigo-600",
             "border-indigo-600",
             "active",
-            "dark:text-[#F1BBCD]",
+            "dark:text-indigo-500",
             "dark:border-indigo-600"
           );
           tabbuttons[i].classList.add(
@@ -303,7 +309,7 @@
           "text-indigo-600",
           "border-indigo-600",
           "active",
-          "dark:text-[#F1BBCD]",
+          "dark:text-indigo-500",
           "dark:border-indigo-600"
         );
         evt.currentTarget.classList.remove(
@@ -321,7 +327,7 @@
       const getDataButton = document.getElementById("getDataButton");
 
       getDataButton.onclick = () => {
-        openTabEvent("Instances");
+        //openTabEvent("Instances");
         dataList.innerHTML = `<tr>
                                   <th scope="col" class="px-6 py-3">Instance name</th>
                                   <th scope="col" class="px-6 py-3">Design system component?</th>
@@ -390,6 +396,10 @@
         if (message.type === "dimension-analysis-result") {
           updateDimensionsUI(message.data);
         }
+        const { type, allowedSpacings } = event.data.pluginMessage;
+    if (type === 'set-allowed-spacings') {
+      spacingInput.value = allowedSpacings.join(', ');
+    }
       };
 
       // Écouteur d'événements pour les liens d'instance
@@ -546,6 +556,13 @@
 
         // Attribuer une nouvelle classe en fonction du pourcentage
         if (percentageBound >= 80) {
+          for (let i = percentageElement.classList.length - 1; i >= 0; i--) {
+            const className = percentageElement.classList[i];
+              if (className.startsWith('bg-') || className.startsWith('text-') ||
+                  className.startsWith('dark:bg-') || className.startsWith('dark:text-') || className.startsWith('border-')) {
+                  percentageElement.classList.remove(className);
+              }
+          }
           percentageElement.classList.add(
             "bg-green-100",
             "text-green-800",
@@ -561,6 +578,13 @@
             "border-green-400"
           );
         } else if (percentageBound >= 60) {
+          for (let i = percentageElement.classList.length - 1; i >= 0; i--) {
+            const className = percentageElement.classList[i];
+              if (className.startsWith('bg-') || className.startsWith('text-') ||
+                  className.startsWith('dark:bg-') || className.startsWith('dark:text-') || className.startsWith('border-')) {
+                  percentageElement.classList.remove(className);
+              }
+          }
           percentageElement.classList.add(
             "bg-lime-100",
             "text-lime-800",
@@ -576,6 +600,13 @@
             "border-lime-400"
           );
         } else if (percentageBound >= 40) {
+          for (let i = percentageElement.classList.length - 1; i >= 0; i--) {
+            const className = percentageElement.classList[i];
+              if (className.startsWith('bg-') || className.startsWith('text-') ||
+                  className.startsWith('dark:bg-') || className.startsWith('dark:text-') || className.startsWith('border-')) {
+                  percentageElement.classList.remove(className);
+              }
+          }
           percentageElement.classList.add(
             "bg-yellow-100",
             "text-yellow-800",
@@ -591,6 +622,13 @@
             "border-yellow-400"
           );
         } else if (percentageBound >= 20) {
+          for (let i = percentageElement.classList.length - 1; i >= 0; i--) {
+            const className = percentageElement.classList[i];
+              if (className.startsWith('bg-') || className.startsWith('text-') ||
+                  className.startsWith('dark:bg-') || className.startsWith('dark:text-') || className.startsWith('border-')) {
+                  percentageElement.classList.remove(className);
+              }
+          }
           percentageElement.classList.add(
             "bg-amber-100",
             "text-amber-800",
@@ -605,7 +643,14 @@
             "border",
             "border-amber-400"
           );
-        } else {
+        } else if (percentageBound >= 0){
+          for (let i = percentageElement.classList.length - 1; i >= 0; i--) {
+            const className = percentageElement.classList[i];
+              if (className.startsWith('bg-') || className.startsWith('text-') ||
+                  className.startsWith('dark:bg-') || className.startsWith('dark:text-') || className.startsWith('border-')) {
+                  percentageElement.classList.remove(className);
+              }
+          }
           percentageElement.classList.add(
             "bg-red-100",
             "text-red-800",
@@ -620,16 +665,10 @@
             "border",
             "border-red-400"
           );
-          percentageElement.classList.remove(
-            "bg-lime-100",
-            "text-lime-800",
-            "dark:bg-gray-700",
-            "dark:text-lime-400",
-            "border-lime-400"
-          );
-        }
 
-        // Mettre à jour la liste des nœuds non liés
+        }
+         
+
         const listUnboundNodes = document.getElementById("listUnboundNodes");
         listUnboundNodes.innerHTML = "";
         unboundNodes.forEach((node) => {
@@ -698,6 +737,17 @@
           );
         }
       }
+
+
+      const spacingInput = document.getElementById('spacingInput');
+  const updateButton = document.getElementById('updateButton');
+
+  // Envoie les nouvelles valeurs au backend lorsque l'utilisateur clique sur le bouton
+  updateButton.onclick = () => {
+    const newSpacings = spacingInput.value.split(',').map(Number);
+    parent.postMessage({ pluginMessage: { type: 'update-spacings', newSpacings } }, '*');
+    console.log(newSpacings);
+  };
     </script>
   </body>
 </html>
