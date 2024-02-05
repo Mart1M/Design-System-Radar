@@ -62,9 +62,6 @@ Using Design System Radar is straightforward:
 - If your components have a suffix, then you need to change this in `code.ts` to match your nomenclature.
 - You can also use `[ds-radar]` in the description of your components if you don't have suffix.
 
-2. **Use your own dimension system**
-
-- Change the values of the table `allowedSpacings` in `code.ts` with your own values.
 
 ## License
 
