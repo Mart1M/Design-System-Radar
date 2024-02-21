@@ -22,15 +22,16 @@ function getSelectedInstanceData() {
                 const instanceId = instanceNode.id;
                 const mainComponent = instanceNode.mainComponent;
                 let mainComponentName = "";
-                let containsKeyword = false;
+                let containsKeyword = true;
                 if (mainComponent) {
                     mainComponentName =
-                        mainComponent.parent &&
-                            mainComponent.parent.type === "COMPONENT_SET"
+                        mainComponent.parent && mainComponent.parent.type === "COMPONENT_SET"
                             ? mainComponent.parent.name
                             : mainComponent.name;
-                    // check if "[ds-radar]"
-                    containsKeyword = mainComponent.description.includes("[ds-radar]");
+                    const descriptionToCheck = mainComponent.parent && mainComponent.parent.type === "COMPONENT_SET"
+                        ? mainComponent.parent.description
+                        : mainComponent.description;
+                    containsKeyword = descriptionToCheck.includes("[ds-radar]");
                 }
                 // check if component name has suffix
                 const hasSuffix = mainComponentName.includes("- ds") || containsKeyword;
